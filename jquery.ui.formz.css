@@ -1,0 +1,82 @@
+@CHARSET "UTF-8";
+
+/* --------------------------------------
+		REQUIRED SECTION   begin
+*/
+.ui-icon.ui-icon-empty, 
+.ui-state-default .ui-icon.ui-icon-empty{
+	background: none;
+}
+
+.ui-form-checkbox, .ui-form-radio{
+	display: inline-block;
+}
+
+/*
+		REQUIRED SECTION   end!
+   --------------------------------------
+*/
+
+
+/*
+	Customize .ui-form* styles free
+*/
+
+
+.ui-form{
+	padding: 1em;
+}
+
+.ui-form-fieldset{
+	margin-top: 1em;
+}
+
+.ui-form-legend{
+	padding: 0 .6em;
+}
+
+.ui-form-input{
+	margin: .4em;
+	padding: .2em;
+}
+
+.ui-form-button{
+	margin: .4em;
+	padding: 0 .5em;
+}
+
+.ui-form-file {
+	cursor: pointer;
+	display: inline-block;
+}
+
+.ui-form-file-name{
+	display: inline-block;
+}
+
+
+/* 
+to jQuery UI CSS framework added new classes: 
+(more precisely: I introduced some new classes)
+*/
+/*
+.ui-form{}
+.ui-form-fieldset{}
+.ui-form-legend{}
+.ui-form-label{}
+.ui-form-input{}
+.ui-form-textarea{}
+.ui-form-text{}
+.ui-form-password{}
+.ui-form-radio{}
+.ui-form-checkbox{}
+.ui-form-submit{}
+.ui-form-image{}
+.ui-form-reset{}
+.ui-form-button{}
+.ui-form-file{}
+.ui-form-file-name{}
+
+Helper classes:
+.ui-formz-no  -  This element will be unchanged!
+*/
