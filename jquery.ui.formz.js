@@ -4,7 +4,7 @@
  * 
  * Requirements:
  * 	- jQuery 1.7+
- *  - jQuery UI 1.8+
+ * 	- jQuery UI 1.8+ 
  * 
  * Inspired by:
  *  - http://www.tuttoaster.com/enhancing-forms-using-jquery-ui/
@@ -13,6 +13,8 @@
  * @author Rácz Tiobr Zoltán <racztiborzoltan@gmail.com>
  * @version 0.1
  * @license http://www.opensource.org/licenses/bsd-license.php
+ * 
+ * To be continued ... ! Please Wait!
  * 
  * Hungarian todo list:
  * @todo options.button.createUIButton beállítás leprogramozása
@@ -24,7 +26,6 @@
  *       szelektora van szűkebbre szabva, mint a dinamikusan betöltött jQuery UI
  *       téma fájljában lévő azon szabály, amely felülbírálja az .ui-icon-empty
  *       saját szabályt! 
- * @todo input file mezőket kialakítani
  */
 ;(function($) {
 $.widget("ui.formz",
@@ -42,6 +43,16 @@ $.widget("ui.formz",
 		 */
 		eventNamespace: '.ui-form',
 		/**
+		 * General events BEGIN!!
+		 */
+		mouseenter: function() { $(this).addClass('ui-state-hover'); },
+		mouseleave: function() { $(this).removeClass('ui-state-hover'); },
+		mousedown: function() { $(this).toggleClass('ui-state-active'); },
+		mouseup: function() { $(this).toggleClass('ui-state-active'); },
+		/**
+		 * General events END!!
+		 */
+		/**
 		 * Visual button settings:
 		 */
 		button:{
@@ -55,6 +66,7 @@ $.widget("ui.formz",
 			 * @var boolean
 			 */
 			createUIButton: false,
+			uiButtonSettings: {},
 		},
 		/**
 		 * Visual checkbox settings:
@@ -70,21 +82,9 @@ $.widget("ui.formz",
 			 * @var string
 			 */
 			uncheckedClass: 'ui-icon-empty',
-			/*
-			 * MouseEnter event on visual checkbox
-			 */
 			mouseenter: function() { $(this).addClass('ui-state-hover'); },
-			/*
-			 * MouseLeave event on visual checkbox
-			 */
 			mouseleave: function() { $(this).removeClass('ui-state-hover'); },
-			/*
-			 * MouseDown event on visual checkbox
-			 */
 			mousedown: function() { $(this).toggleClass('ui-state-active'); },
-			/*
-			 * MouseUp event on visual checkbox
-			 */
 			mouseup: function() { $(this).toggleClass('ui-state-active'); }
 		},
 		/**
@@ -101,41 +101,16 @@ $.widget("ui.formz",
 			 * @var string
 			 */
 			uncheckedClass: 'ui-icon-radio-off',
-			/*
-			 * MouseEnter event on visual radio input
-			 */
 			mouseenter: function() { $(this).addClass('ui-state-hover'); },
-			/*
-			 * MouseLeave event on visual radio input
-			 */
 			mouseleave: function() { $(this).removeClass('ui-state-hover'); },
-			/*
-			 * MouseDown event on visual radio input
-			 */
 			mousedown: function() { $(this).toggleClass('ui-state-active'); },
-			/*
-			 * MouseUp event on visual radio input
-			 */
 			mouseup: function() { $(this).toggleClass('ui-state-active'); }
-			
 		},
 		file: {
 			iconClass: 'ui-icon-disk',
-			/*
-			 * MouseEnter event on visual radio input
-			 */
 			mouseenter: function() { $(this).addClass('ui-state-hover'); },
-			/*
-			 * MouseLeave event on visual radio input
-			 */
 			mouseleave: function() { $(this).removeClass('ui-state-hover'); },
-			/*
-			 * MouseDown event on visual radio input
-			 */
 			mousedown: function() { $(this).toggleClass('ui-state-active'); },
-			/*
-			 * MouseUp event on visual radio input
-			 */
 			mouseup: function() { $(this).toggleClass('ui-state-active'); }
 		}
 	},
@@ -146,12 +121,13 @@ $.widget("ui.formz",
 		var context = this.element;
 		
 		context.each(function(i, e) {
+			options = $(context).data('formz').options;
 			// Add permanent classes
 			$('form', e).addClass('ui-form ui-widget ui-widget-content ui-corner-all');
 			$('fieldset', e).addClass('ui-form-fieldset ui-widget-content ui-corner-all');
 			$('legend', e).addClass('ui-form-legend ui-widget-header ui-corner-all');
 			$('label', e).addClass('ui-form-label');
-			$(':input:not(:hidden)', e).addClass('ui-form-input ui-state-default ui-corner-all');
+			$(':input', e).addClass('ui-form-input ui-state-default ui-corner-all');
 			$('textarea', e).addClass('ui-form-textarea');
 			$(':text', e).addClass('ui-form-text');
 			$(':password', e).addClass('ui-form-password');
@@ -163,17 +139,18 @@ $.widget("ui.formz",
 			$(':button', e).addClass('ui-form-button');
 			$(':file', e).addClass('ui-form-file');
 			
-			// Some general event:
-			$(':input', e).on('mouseenter'+$(this).data('formz').options.eventNamespace, function() { $(this).addClass('ui-state-hover'); });
-			$(':input', e).on('mouseleave'+$(this).data('formz').options.eventNamespace, function() { $(this).removeClass('ui-state-hover'); });
-			$(':input', e).on('focus'+$(this).data('formz').options.eventNamespace, function() { $(this).addClass('ui-state-focus'); });
-			$(':input', e).on('blur'+$(this).data('formz').options.eventNamespace, function() { $(this).removeClass('ui-state-focus'); });
-
+			// Some general event binding:
+			$('input, button, select, textarea', e)
+			.on('mouseenter'+options.eventNamespace, options.mouseenter)
+			.on('mouseleave'+options.eventNamespace, options.mouseleave)
+			.on('mousedown'+options.eventNamespace, options.mousedown)
+			.on('mouseup'+options.eventNamespace, options.mouseup);
+			
 			// Type specific initializations:
-			$(':reset, :submit', e).each(function(j, f) { object.button(this, context); } );
+			$('button, input:reset, input:submit, input[type="button"]', e).each(function(j, f) { object.button(this, context); } );
 			$(':checkbox', e).each(function(j, f) { object.checkbox(this, context); } );
 			$(':radio', e).each(function() { object.radio(this, context); } );
-			//$(':file', e).each(function() { object.file(this, context); } );
+			$(':file', e).each(function() { object.file(this, context); } );
 		});
 	},
 	
@@ -183,17 +160,9 @@ $.widget("ui.formz",
 	//
 	button: function(element, context)
 	{
-		if($(element).is(":submit"))
-		{
-			$(element).addClass(this.options.button.classes);
-		}
-		else if($(element).is(":reset"))
-			$(element).addClass("ui-priority-secondary ui-corner-all");
-		
-		// Egérkattintás, és egér felengedés a gombon:
-		$(element).bind('mousedown'+$(context).data('formz').options.eventNamespace+' mouseup'+$(context).data('formz').options.eventNamespace, function() {
-			$(this).toggleClass('ui-state-active');
-		});
+		options = $(context).data('formz').options;
+		$button = $(element).addClass(options.button.classes);
+		if ($button.is(':reset')) $button.addClass('ui-priority-secondary');
 	},
 	// END .button()
 	// -------------------------------------------------------------------------
@@ -206,8 +175,8 @@ $.widget("ui.formz",
 	checkbox: function(element, context)
 	{
 		options = $(context).data('formz').options;
-		// The real input checkbox hide with CSS class:
-		$checkbox = $(element).addClass(this.options.hiddenClass);
+		// The real input checkbox:
+		$checkbox = $(element);
 		
 		// Base of visual jQuery UI checkbox, and binding events:
 		$spans = $('<span class="ui-state-default ui-corner-all ui-form-checkbox"><span class="ui-icon ui-icon-empty"></span></span>')
@@ -216,13 +185,15 @@ $.widget("ui.formz",
 			.on('mousedown'+options.eventNamespace, options.checkbox.mousedown)
 			.on('mouseup'+options.eventNamespace, options.checkbox.mouseup)
 			// Insert spans after the real checkbox:
-			.insertAfter($checkbox);
+			.insertAfter($checkbox)
+			// The real checkbox into outer <span>:
+			.append($checkbox);
 		
-		// If the real checkbox is hidden, then also outer <span> is hidden:
-		if ($checkbox.is(':hidden')) $spans.addClass(this.options.hiddenClass);
+		// If real checkbox is not displayed, then hide visual checkbox with CSS class:
+		if ($checkbox.css('display')=='none') $spans.addClass(options.hiddenClass);
 		
-		// The real checkbox into outer <span>:
-		$('span.ui-icon', $spans).after($checkbox);
+		// The real input checkbox hide with CSS class:
+		$checkbox = $checkbox.addClass(options.hiddenClass);
 		
 		// Change CSS type of inner <span> if the real checkbox is default checked:
 		if ($checkbox.is(':checked')) $('span.ui-icon', $spans).toggleClass(options.checkbox.uncheckedClass+' '+options.checkbox.checkedClass);
@@ -258,8 +229,8 @@ $.widget("ui.formz",
 	//
 	radio: function(element, context){
 		options = $(context).data('formz').options;
-		// Hide the real input radio with CSS class:
-		$radio = $(element).addClass(this.options.hiddenClass);
+		// The real input radio:
+		$radio = $(element);
 		
 		// Base of visual jQuery UI radio, and binding events:
 		$spans = $('<span class="ui-state-default ui-corner-all ui-form-radio"><span class="ui-icon ui-icon-radio-off"></span></span>')
@@ -268,13 +239,14 @@ $.widget("ui.formz",
 			.on('mousedown'+options.eventNamespace, options.radio.mousedown)
 			.on('mouseup'+options.eventNamespace, options.radio.mouseup)
 			.insertAfter($radio)
-			;
+			// The real radio input into outer <span>:
+			.append($radio);
 		
-		// If the real checkbox is hidden, then also outer <span> is hidden:
-		if ($radio.is(':hidden')) $spans.addClass(this.options.hiddenClass);
+		// If real radio input is not displayed, then hide visual checkbox with CSS class:
+		if ($radio.css('display')=='none') $spans.addClass(options.hiddenClass);
 		
-		// The real radio input into outer <span>:
-		$('span.ui-icon', $spans).after($radio);
+		// The real radio input hide with CSS class:
+		$radio = $radio.addClass(options.hiddenClass);
 		
 		// Change CSS type of inner <span> if the real radio input is default checked:
 		if ($radio.is(':checked')) $('span.ui-icon', $spans).toggleClass(options.radio.uncheckedClass+' '+options.radio.checkedClass);
@@ -309,36 +281,35 @@ $.widget("ui.formz",
 	// -------------------------------------------------------------------------
 
 	
-	/*
 	// -------------------------------------------------------------------------
 	// file function:
 	//
 	file: function(element, context){
 		options = $(context).data('formz').options;
 		// Hide the real file input with CSS class:
-		$file = $(element).addClass(this.options.hiddenClass);
+		$file = $(element);//.addClass(options.hiddenClass);
 		
 		// Base of visual jQuery UI file input, and binding events:
-		$spans = $('<span class="ui-state-default ui-corner-all ui-form-input ui-form-file"><span class="ui-form-file-name"></span><span class="ui-icon '+options.file.iconClass+'"></span></span>')
-			.on('mouseenter'+options.eventNamespace, options.file.mouseenter)
-			.on('mouseleave'+options.eventNamespace, options.file.mouseleave)
-			.on('mousedown'+options.eventNamespace, options.file.mousedown)
-			.on('mouseup'+options.eventNamespace, options.file.mouseup)
+		$spans = $('<span class="ui-state-default ui-corner-all ui-form-input ui-form-file"><span class="ui-icon '+options.file.iconClass+'"></span><span class="ui-form-file-name"></span></span>')
 			.insertAfter($file)
-			// Former simple input field formalize:
-			.formz(options);
+			// The real file input into outer <span>:
+			.append($file)
+			// Hide the file name container:
+			.find('.ui-form-file-name').hide();
 		
-		// If the real file input is hidden, then also outer <span> is hidden:
-		if ($file.is(':hidden')) $spans.addClass(this.options.hiddenClass);
+		// If real file input is not displayed, then hide visual checkbox with CSS class:
+		if ($file.css('display')=='none') $spans.addClass(options.hiddenClass);
 
-		// The real file input into outer <span>:
-		$('span.ui-icon', $spans).after($file);
-		
-		
+		//
+		// Original source and idea: http://viget.com/inspire/custom-file-inputs-with-a-bit-of-jquery
+		//
+		$file.on('change focus click', function(e){
+			var $this = $(this), valArray = $this.val().split('\\'), newVal = valArray[valArray.length-1];
+			if(newVal !== '')  $this.siblings('.ui-form-file-name').html(newVal).show();
+		}).change();
 	},
 	// END .file()
 	// -------------------------------------------------------------------------
-	*/
 	
 });
 
