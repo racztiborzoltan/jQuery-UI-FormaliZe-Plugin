@@ -3,9 +3,15 @@ jQuery UI FormaliZe Plugin
 
 Released under the MIT license
 
+Example
+--------------------------
+http://racztiborzoltan.github.io/jQuery-UI-FormaliZe-Plugin/  
+http://racztiborzoltan.github.io/jQuery-UI-FormaliZe-Plugin/example
+
+
 Usage 
 --------------------------
-Look at the example!
+Look at the [example](http://racztiborzoltan.github.io/jQuery-UI-FormaliZe-Plugin/example)!
 ```
 $(SELECTOR).formalize();
 ```
