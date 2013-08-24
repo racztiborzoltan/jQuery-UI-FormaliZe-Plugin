@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>jQuery-UI-FormaliZe Example</title>
+	
+	<!-- jQuery 1.10 -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+	<!-- jQuery UI 1.10.3 -->
+	<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<script id="jquery_ui_js" type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	
+	<!-- jQuery UI Theme Switcher Widget -->
+	<script type="text/javascript" src="https://raw.github.com/harborhoffer/Super-Theme-Switcher/master/jquery.themeswitcher.min.js"></script>
+	
+	<!-- jQuery-UI-FormaliZe plugin -->
+	<link type="text/css" rel="stylesheet" href="https://rawgithub.com/racztiborzoltan/jQuery-UI-FormaliZe-Plugin/master/jquery.ui.formalize.css" />
+	<script type="text/javascript" src="https://rawgithub.com/racztiborzoltan/jQuery-UI-FormaliZe-Plugin/master/jquery.ui.formalize.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			// jQuery UI FormaliZe:
+			if (window.location.search != '?without_plugin')
+				$('form').formalize();
+		});
+	</script>
+	<!--/ jQuery-UI-FormaliZe plugin -->
+	
+	<!-- Additional JavaScript codes (only for examples) -->
+	<script type="text/javascript" src="additionals.js"></script>
+	<!-- Additional CSS styles (only for examples) -->
+	<link type="text/css" rel="stylesheet" href="additional.css" />
+</head>
+<body>
+
+<h1 class="ui-widget-header ui-corner-all">
+	jQuery UI FormaliZe Plugin <span id="widget_version"></span> Example
+	
+	<span id="switcher" style="display:inline-block"></span>
+	<a id="with_or_without_plugin" href="#"></a>
+	<a id="show_hidden_area" href="#">Show hidden area</a>
+</h1>
+
+<!-- ======================================================================= -->
+
+<form method="post">
+
+	<fieldset>
+		<legend>Buttons</legend>
+		&lt;input&gt; buttons:
+		<input type="submit" value="Submit" />
+		<input type="button" value="Button" />
+		<input type="reset" value="Reset" />
+		<br />
+		&lt;button&gt; buttons:
+		<button type="submit" value="">Submit</button>
+		<button type="button" value="">Button</button>
+		<button type="reset" value="">Reset</button>
+		<br />
+		<input type="image" src="forward.png" alt="image-input"/>
+		<br />
+		<button type="button"><img alt="Button Image" title="Button" src="forward.png"/></button>
+	</fieldset>
+	
+	<!-- =================================================================== -->
+	
+	<fieldset>
+		<legend>Checkboxes</legend>
+		<label>
+			Checkbox (default OFF) in &lt;label&gt;
+			<input name="checkbox_1" type="checkbox" value="checkbox_1_value"/>
+		</label>
+		<br />
+		<label for="checkbox_2">Checkbox (default OFF) after &lt;label&gt;</label>
+		<input name="checkbox_2" id="checkbox_2" type="checkbox" value="checkbox_2_value"/>
+		<br />
+		<label>
+			Checkbox (default ON) in &lt;label&gt;
+			<input name="checkbox_3" type="checkbox" value="checkbox_3_value" checked="checked"/>
+		</label>
+		<br />
+		<label for="checkbox_4">Checkbox (default ON) after &lt;label&gt;</label>
+		<input name="checkbox_4" type="checkbox" id="checkbox_4"  value="checkbox_4_value" checked="checked"/>
+	</fieldset>
+	
+	<!-- =================================================================== -->
+	
+	<fieldset>
+		<legend>Radio buttons</legend>
+		<label>
+			Radiobutton (default OFF) in &lt;label&gt;
+			<input name="radio_1" type="radio" value="radio_1_value" />
+		</label>
+		<br />
+		<label for="radio_2">Radiobutton (default OFF) after &lt;label&gt;</label>
+		<input id="radio_2" name="radio_2" type="radio" value="radio_2_value" />
+		<br />
+		<label>
+			Radiobutton (default ON) in &lt;label&gt;
+			<input name="radio_3" type="radio" value="radio_3_value" checked="checked"/>
+		</label>
+		<br />
+		<label>Radiobutton (default ON) after &lt;label&gt;</label>
+		<input name="radio_4" type="radio" value="radio_4_value" checked="checked"/>
+		<br />
+		<span style="margin-right: 2em;">Radio buttons with some name:</span>
+		<div style="margin-left:2em">
+			<label>
+				<input name="radio_group" type="radio" value="radio_group_value_1" />
+				Radio 1.1 (in &lt;label&gt;)
+			</label>
+			<br />
+			<input id="radio_group_1_2" name="radio_group" type="radio" value="radio_group_value_2" />
+			<label for="radio_group_1_2">Radio 1.2 (before &lt;label&gt;)</label>
+			<br />
+			<label>
+				<input name="radio_group" type="radio" value="radio_group_value_3" />
+				Radio 1.3 (in &lt;label&gt;)
+			</label>
+		</div>
+	</fieldset>
+	
+	<!-- =================================================================== -->
+	
+	<fieldset>
+		<legend>Text input</legend>
+		<label>
+			Textfield:
+			<input name="input_text" type="text" value="Hello World" />
+		</label>
+		<br />
+		<label>
+			Password:
+			<input name="input_password" type="password" value="topsecret" />
+		</label>
+		<br />
+		<label>
+			Textarea:
+			<textarea name="textarea" rows="5" cols="40" style="width:50%; height:100px;vertical-align: top;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</textarea>
+		</label>
+	</fieldset>
+	
+	<fieldset>
+		<legend>File select</legend>
+		<label>
+			File in &lt;label&gt;:
+			<input name="input_file" type="file" />
+		</label>
+		<br />
+		<label for="input_file_2">File after &lt;label&gt;:</label>
+		<input id="input_file_2" name="input_file_2" type="file" />
+	</fieldset>
+	
+	<!-- =================================================================== -->
+	
+	<fieldset>
+		<legend>Select</legend>
+		
+		<label>
+			Drop-down select: 
+			<select name="dropdown_select"><option>&nbsp;</option></select>
+		</label>
+		<label>
+			Drop-down select with optgroup:
+			<select name="dropdown_optgroup_select"><option>&nbsp;</option></select>
+		</label>
+		<br />
+		
+		<label>
+			Multiline select:
+			<select name="multiline_select" size="5"><option>&nbsp;</option></select>
+		</label>
+		<label>
+			Multiline select with optgroup:
+			<select name="multiline_optgroup_select" size="5"><option>&nbsp;</option></select>
+		</label>
+		<br />
+		
+		<label>
+			Multiple Drop-down select: 
+			<select name="multiple_dropdown_select" multiple="multiple"><option>&nbsp;</option></select>
+		</label>
+		<label>
+			Multiple Drop-down select with optgroup:
+			<select name="multiple_dropdown_optgroup_select" multiple="multiple"><option>&nbsp;</option></select>
+		</label>
+		<br />
+		
+		<label>
+			Multiline Multiple select:
+			<select name="multiline_multiple_select" size="15" multiple="multiple"><option>&nbsp;</option></select>
+		</label>
+		<label>
+			Multiline Multiple select with optgroup:
+			<select name="multiline_multiple_optgroup_select" size="15" multiple="multiple"><option>&nbsp;</option></select>
+		</label>
+		<br />
+		
+	</fieldset>
+	
+	<!-- =================================================================== -->
+
+</form>
+
+
+<!-- ======================================================================= -->
+
+
+<hr style="border-width: 2px;"/>
+	
+
+<form method="post" id="not_visible_items" style="display:none;">
+	
+	<p>"Not-Visible" form items</p>
+	
+	<fieldset>
+		<legend>Buttons</legend>
+		&lt;input&gt; buttons: 
+		<input type="submit" value="Submit" />
+		<input type="button" value="Button" />
+		<input type="reset" value="Reset" />
+		<br />
+		&lt;button&gt; buttons: 
+		<button type="submit" value="">Submit</button>
+		<button type="button" value="">Button</button>
+		<button type="reset" value="">Reset</button>
+		<br />
+		<input type="image" src="forward.png" alt="image-input"/>
+		<br />
+		<button type="button"><img alt="Button Image" title="Button" src="forward.png"/></button>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Checkboxes</legend>
+		<label>
+			Checkbox (default OFF) in &lt;label&gt;
+			<input name="checkbox_1" type="checkbox" value="checkbox_1_value"/>
+		</label>
+		<br />
+		<label for="notvisible_checkbox_2">Checkbox (default OFF) after &lt;label&gt;</label>
+		<input name="checkbox_2" id="notvisible_checkbox_2" type="checkbox" value="checkbox_2_value"/>
+		<br />
+		<label>
+			Checkbox (default ON) in &lt;label&gt;
+			<input name="checkbox_3" type="checkbox" value="checkbox_3_value" checked="checked"/>
+		</label>
+		<br />
+		<label for="notvisible_checkbox_4">Checkbox (default ON) after &lt;label&gt;</label>
+		<input name="checkbox_4" type="checkbox" id="notvisible_checkbox_4"  value="checkbox_4_value" checked="checked"/>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Radio buttons</legend>
+		<label>
+			Radiobutton (default OFF) in &lt;label&gt;
+			<input name="radio_1" type="radio" value="radio_1_value" />
+		</label>
+		<br />
+		<label for="notvisible_radio_2">Radiobutton (default OFF) after &lt;label&gt;</label>
+		<input id="notvisible_radio_2" name="radio_2" type="radio" value="radio_2_value" />
+		<br />
+		<label>
+			Radiobutton (default ON) in &lt;label&gt;
+			<input name="radio_3" type="radio" value="radio_3_value" checked="checked"/>
+		</label>
+		<br />
+		<label>Radiobutton (default ON) after &lt;label&gt;</label>
+		<input name="radio_4" type="radio" value="radio_4_value" checked="checked"/>
+		<br />
+		<span style="margin-right: 2em;">Radio buttons with some name:</span>
+		<div style="margin-left:2em">
+			<label>
+				<input name="radio_group" type="radio" value="radio_group_value_1" />
+				Radio 1.1 (in &lt;label&gt;)
+			</label>
+			<br />
+			<input id="notvisible_radio_group_1_2" name="radio_group" type="radio" value="radio_group_value_2" />
+			<label for="notvisible_radio_group_1_2">Radio 1.2 (before &lt;label&gt;)</label>
+			<br />
+			<label>
+				<input name="radio_group" type="radio" value="radio_group_value_3" />
+				Radio 1.3 (in &lt;label&gt;)
+			</label>
+		</div>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Text input</legend>
+		<label>
+			Textfield:
+			<input name="input_text" type="text" value="Hello World" />
+		</label>
+		<br />
+		<label>
+			Password:
+			<input name="input_password" type="password" value="topsecret" />
+		</label>
+		<br />
+		<label>
+			Textarea:
+			<textarea name="textarea" rows="5" cols="40" style="width:50%; height:100px;vertical-align: top;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</textarea>
+		</label>
+	</fieldset>
+	
+	<fieldset>
+		<legend>File select</legend>
+		<label>
+			File in &lt;label&gt;:
+			<input name="input_file" type="file" />
+		</label>
+		<br />
+		<label for="notvisible_input_file_2">File after &lt;label&gt;:</label>
+		<input id="notvisible_input_file_2" name="input_file_2" type="file" />
+		
+		<br />
+		
+	</fieldset>
+	
+	<fieldset>
+		<legend>Select</legend>
+		
+		<label>
+			Drop-down select: 
+			<select name="dropdown_select"><option>&nbsp;</option></select>
+		</label>
+		<label>
+			Drop-down select with optgroup:
+			<select name="dropdown_optgroup_select"><option>&nbsp;</option></select>
+		</label>
+		<br />
+		
+		<label>
+			Multiline select:
+			<select name="multiline_select" size="5"><option>&nbsp;</option></select>
+		</label>
+		<label>
+			Multiline select with optgroup:
+			<select name="multiline_optgroup_select" size="5"><option>&nbsp;</option></select>
+		</label>
+		<br />
+		
+		<label>
+			Multiple Drop-down select: 
+			<select name="multiple_dropdown_select" multiple="multiple"><option>&nbsp;</option></select>
+		</label>
+		<label>
+			Multiple Drop-down select with optgroup:
+			<select name="multiple_dropdown_optgroup_select" multiple="multiple"><option>&nbsp;</option></select>
+		</label>
+		<br />
+		
+		<label>
+			Multiline Multiple select:
+			<select name="multiline_multiple_select" size="15" multiple="multiple"><option>&nbsp;</option></select>
+		</label>
+		<label>
+			Multiline Multiple select with optgroup:
+			<select name="multiline_multiple_optgroup_select" size="15" multiple="multiple"><option>&nbsp;</option></select>
+		</label>
+		<br />
+		
+	</fieldset>
+	
+	<fieldset>
+		<legend>Hidden controls</legend>
+		<input name="hidden_input" type="hidden" value="1" />
+		<input name="hidden_button" type="button" value="4" style="display: none;"/>
+		<button name="hidden_button2" type="button" value="5" style="display: none;">Hidden Button</button>
+		<input name="hidden_checkbox" type="checkbox" value="2" style="display: none;"/>
+		<input name="hidden_radio" type="radio" value="3" style="display: none;"/>
+		<input name="hidden_file" type="file" style="display: none;" />
+	</fieldset>
+	
+</form>	
+
+<!-- ======================================================================= -->
+
+</body>
+</html>

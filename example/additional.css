@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+body{
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+}
+.text-css{
+	display: none;
+}
+
+hr{
+	margin: 1em auto;
+}
+
+body > .ui-widget-header{
+	margin: 0;
+	padding: .5em;
+	font-size: 16px;
+}
+
+#switcher, #with_or_without_plugin, #show_hidden_area{
+	font-size: 12px;
+	margin-left: 2em;
+}
+
+select{
+	vertical-align: middle;
+}
+
