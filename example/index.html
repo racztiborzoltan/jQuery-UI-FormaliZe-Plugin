@@ -5,7 +5,7 @@
 	<title>jQuery-UI-FormaliZe Example</title>
 	
 	<!-- jQuery 1.10 -->
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
 	<!-- jQuery UI 1.10.3 -->
@@ -16,14 +16,13 @@
 	<script type="text/javascript" src="https://raw.github.com/harborhoffer/Super-Theme-Switcher/master/jquery.themeswitcher.min.js"></script>
 	
 	<!-- jQuery-UI-FormaliZe plugin -->
-	<link type="text/css" rel="stylesheet" href="../jquery.ui.formz.css" />
-	<script type="text/javascript" src="../jquery.ui.formz.js"></script>
+	<link type="text/css" rel="stylesheet" href="../jquery.ui.formalize.css" />
+	<script type="text/javascript" src="../jquery.ui.formalize.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			
 			// jQuery UI FormaliZe:
 			if (window.location.search != '?without_plugin')
-				$(document).formz();
+				$('form').formalize();
 		});
 	</script>
 	<!--/ jQuery-UI-FormaliZe plugin -->
@@ -35,13 +34,13 @@
 </head>
 <body>
 
-<div class="ui-widget-header ui-corner-all">
-	jQuery UI FormaliZe Plugin Example
+<h1 class="ui-widget-header ui-corner-all">
+	jQuery UI FormaliZe Plugin <span id="widget_version"></span> Example
 	
-	<div id="switcher" style="display:inline-block"></div>
-	<a id="with_or_without_plugin"></a>
-	<a id="show_hidden_area">Show hidden area</a>
-</div>
+	<span id="switcher" style="display:inline-block"></span>
+	<a id="with_or_without_plugin" href="#"></a>
+	<a id="show_hidden_area" href="#">Show hidden area</a>
+</h1>
 
 <!-- ======================================================================= -->
 
@@ -196,41 +195,7 @@
 			Multiline Multiple select with optgroup:
 			<select name="multiline_multiple_optgroup_select" size="15" multiple="multiple"><option>&nbsp;</option></select>
 		</label>
-		<script type="text/javascript">
-		$('[name="multiline_multiple_select"]').on('change', function(e){
-			console.log(this.selectedIndex);
-		});
-		</script>
 		<br />
-		
-		<!-- 
-		<br />
-		<span class="ui-form-select ui-form-select-bar" id="select1">
-			<button class="first-select-item" type="button">Run last action</button>
-			<button class="select-arrow" type="button">Select an action</button>
-		</span>
-		<ul id="select1_options" class="ui-select-options">
-			<li class="ui-select-option">Option 1</li>
-			<li class="ui-select-option">Option 2</li>
-			<li class="ui-select-option">Option 3</li>
-			<li class="ui-select-option">Option 4</li>
-		</ul>
-		
-		<script type="text/javascript">
-			$('.ui-form-select-bar .first-select-item')
-			.button()
-			.click(function(e){
-				window.alert('FIRST SELECT ITEM CLICKED');
-			})
-			.next().button( {
-				text: false,
-				icons: {
-					primary: "ui-icon-triangle-1-s"
-				}
-			})
-			.parent().buttonset();
-		</script>
-		 -->
 		
 	</fieldset>
 	
@@ -241,11 +206,14 @@
 
 <!-- ======================================================================= -->
 
-<br />
+
 <hr style="border-width: 2px;"/>
+	
 
 <form method="post" id="not_visible_items" style="display:none;">
+	
 	<p>"Not-Visible" form items</p>
+	
 	<fieldset>
 		<legend>Buttons</legend>
 		&lt;input&gt; buttons: 
@@ -390,41 +358,7 @@
 			Multiline Multiple select with optgroup:
 			<select name="multiline_multiple_optgroup_select" size="15" multiple="multiple"><option>&nbsp;</option></select>
 		</label>
-		<script type="text/javascript">
-		$('[name="multiline_multiple_select"]').on('change', function(e){
-			console.log(this.selectedIndex);
-		});
-		</script>
 		<br />
-		
-		<!-- 
-		<br />
-		<span class="ui-form-select ui-form-select-bar" id="select1">
-			<button class="first-select-item" type="button">Run last action</button>
-			<button class="select-arrow" type="button">Select an action</button>
-		</span>
-		<ul id="select1_options" class="ui-select-options">
-			<li class="ui-select-option">Option 1</li>
-			<li class="ui-select-option">Option 2</li>
-			<li class="ui-select-option">Option 3</li>
-			<li class="ui-select-option">Option 4</li>
-		</ul>
-		
-		<script type="text/javascript">
-			$('.ui-form-select-bar .first-select-item')
-			.button()
-			.click(function(e){
-				window.alert('FIRST SELECT ITEM CLICKED');
-			})
-			.next().button( {
-				text: false,
-				icons: {
-					primary: "ui-icon-triangle-1-s"
-				}
-			})
-			.parent().buttonset();
-		</script>
-		 -->
 		
 	</fieldset>
 	
@@ -438,9 +372,6 @@
 		<input name="hidden_file" type="file" style="display: none;" />
 	</fieldset>
 	
-	<fieldset>
-		<legend>Object controls</legend>
-	</fieldset>
 </form>	
 
 <!-- ======================================================================= -->

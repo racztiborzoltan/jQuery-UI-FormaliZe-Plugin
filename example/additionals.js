@@ -18,7 +18,6 @@ $(function(){
 	//
 	$('#show_hidden_area').button().click(function(){
 		$text = $('.ui-button-text', this);
-		console.log($text.html());
 		if ($text.html() == 'Show hidden area')
 		{
 			$('#not_visible_items').show();
@@ -29,8 +28,14 @@ $(function(){
 			$('#not_visible_items').hide();
 			$text.html('Show hidden area');
 		}
-		
 	});
+	
+	//
+	// display version of widget:
+	//
+	var widget_version = $.z.formalize.version();
+	if (widget_version.search('v')!=0) widget_version = 'v'+widget_version;
+	$('#widget_version').html(widget_version);
 	
 
 	// Collect the inline "style" text:

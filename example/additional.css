@@ -13,18 +13,14 @@ hr{
 	margin: 1em auto;
 }
 
-body > div.ui-widget-header{
+body > .ui-widget-header{
+	margin: 0;
 	padding: .5em;
+	font-size: 16px;
 }
 
-#switcher{
-	display: inline-block;
-	margin-left: 30px;
-}
-
-#with_or_without_plugin, #show_hidden_area{
-	float: right;
-	margin-top: -0.4em;
+#switcher, #with_or_without_plugin, #show_hidden_area{
+	font-size: 12px;
 	margin-left: 2em;
 }
 
