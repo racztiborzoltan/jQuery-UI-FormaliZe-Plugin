@@ -31,25 +31,44 @@
 	padding: 0 .5em;
 }
 
-.ui-selectable .ui-selecting { 
-	background: #FECA40; 
-}
-.ui-selectable .ui-selected { 
-	background: #F39814;
-	color: white; 
-}
-.ui-selectable {
+
+.ui-form-select{
 	display: inline-block;
+	vertical-align: middle;
+}
+.ui-form-select.ui-state-active{
+	background: none;
+	color: inherit;
+}
+
+.ui-form-options{
 	list-style-type: none;
-	margin: 0;
-	padding: 0;
+	overflow-y: scroll;
+	display: inline-block;
+	padding: 0 0.3em 0 0.2em;
+	
 }
-.ui-selectable li { 
-	border-width: 0;
-	padding: 0.4em;
-	font-size: 1.4em;
-	height: 18px; 
+.ui-form-option{
+	list-style-type: none;
+	border: 1px solid transparent;
+	height: auto;
+	font-size: 1em;
+	font-style: normal;
+	font-weight: normal;
 }
+.ui-form-option.ui-selected, .ui-form-option.ui-selecting, .ui-form-option.ui-unselecting{
+//	border-width: 0px;
+}
+.ui-form-options .ui-form-optgroup{
+	font-style: italic;
+	font-weight: bold;
+}
+.ui-form-optgroup-option{
+	list-style-type: none;
+	overflow: hidden;
+	padding-left: 1em;
+}
+
 
 /* .ui-form-file * original CSS style source and idea: http://viget.com/inspire/custom-file-inputs-with-a-bit-of-jquery */
 
