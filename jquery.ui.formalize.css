@@ -1,0 +1,130 @@
+@CHARSET "UTF-8";
+
+.ui-icon.ui-icon-empty, 
+.ui-state-default .ui-icon.ui-icon-empty{
+	background: none;
+}
+
+.ui-form{
+	padding: 1em;
+}
+
+.ui-form-fieldset{
+	margin-top: 1em;
+}
+
+.ui-form-legend{
+	padding: 0 .6em;
+}
+
+.ui-form-input{
+	margin: .4em;
+	padding: .2em;
+}
+
+.ui-form-checkbox, .ui-form-radio{
+	display: inline-block;
+}
+
+.ui-form-button{
+	margin: .4em;
+	padding: 0 .5em;
+}
+
+
+.ui-form-select{
+	display: inline-block;
+	vertical-align: middle;
+}
+.ui-form-select.ui-state-active{
+	background: none;
+	color: inherit;
+}
+
+.ui-form-options{
+	list-style-type: none;
+	overflow-y: scroll;
+	display: inline-block;
+	padding: 0 0.3em 0 0.2em;
+	
+}
+.ui-form-option{
+	list-style-type: none;
+	border: 1px solid transparent;
+	height: auto;
+	font-size: 1em;
+	font-style: normal;
+	font-weight: normal;
+}
+.ui-form-option.ui-selected, .ui-form-option.ui-selecting, .ui-form-option.ui-unselecting{
+//	border-width: 0px;
+}
+.ui-form-options .ui-form-optgroup{
+	font-style: italic;
+	font-weight: bold;
+}
+.ui-form-optgroup-option{
+	list-style-type: none;
+	overflow: hidden;
+	padding-left: 1em;
+}
+
+
+/* .ui-form-file * original CSS style source and idea: http://viget.com/inspire/custom-file-inputs-with-a-bit-of-jquery */
+
+.ui-form-file {
+	cursor: pointer;
+	display: inline-block;
+	overflow: hidden;
+	position: relative;
+	vertical-align: middle;
+}
+.ui-form-file input[type="file"] {
+	cursor: pointer;
+	font-size: 100px;
+	height: 100%;
+	filter: alpha(opacity=1);
+	-moz-opacity: 0;
+	opacity: 0;
+	position: absolute;
+	margin: 0;
+	top: 0;
+	right: 0;
+}
+
+.ui-form .ui-icon{
+	display: inline-block;
+}
+
+.ui-form-file-name{
+	display: inline-block;
+	margin: auto .5em;
+}
+
+
+/* 
+to jQuery UI CSS framework added new classes: 
+(more precisely: I introduced some new classes)
+*/
+/*
+.ui-icon-empty{}
+.ui-form{}
+.ui-form-fieldset{}
+.ui-form-legend{}
+.ui-form-label{}
+.ui-form-input{}
+.ui-form-textarea{}
+.ui-form-text{}
+.ui-form-password{}
+.ui-form-radio{}
+.ui-form-checkbox{}
+.ui-form-submit{}
+.ui-form-image{}
+.ui-form-reset{}
+.ui-form-button{}
+.ui-form-file{}
+.ui-form-file-name{}
+
+Helper classes:
+.ui-formz-no  -  This element will be unchanged!
+*/
